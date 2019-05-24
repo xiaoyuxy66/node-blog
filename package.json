@@ -1,0 +1,24 @@
+{
+  "name": "node-blog",
+  "version": "0.0.1",
+  "description": "node develop blog",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"cross-env NODE_ENV=dev nodemon ./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoyuxy66/node-blog.git"
+  },
+  "author": "zhaoDan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaoyuxy66/node-blog/issues"
+  },
+  "homepage": "https://github.com/xiaoyuxy66/node-blog#readme",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.19.0"
+  }
+}
