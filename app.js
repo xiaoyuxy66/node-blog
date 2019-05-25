@@ -27,7 +27,9 @@ const getPostData=(req)=>{
             )
         })
     });
+    return promise
 }
+
 let httpHandle=(req,res)=>{
     //设置返回值为json格式
     res.setHeader('Content-type','application/json');
@@ -39,15 +41,32 @@ let httpHandle=(req,res)=>{
     getPostData(req).then(postData=>{
         req.body=postData;
         //处理blog路由
-        const blogDate = handleBlogRouter(req,res);
-        if (blogDate) {
-            res.end(JSON.stringify(blogDate))
+        // const blogDate = handleBlogRouter(req,res);
+        // if (blogDate) {
+        //     res.end(JSON.stringify(blogDate))
+        //     return
+        // }
+
+        //处理blog路由(promise)
+        const blogResult = handleBlogRouter(req, res);
+        if (blogResult) {
+            blogResult.then(blogDate=>{
+                 res.end(JSON.stringify(blogDate));
+            });
             return
         }
+
         //处理user路由
-        const userDate=handleUserRouter(req,res);
-        if(userDate){
-            res.end(JSON.stringify(userDate));
+        // const userDate=handleUserRouter(req,res);
+        // if(userDate){
+        //     res.end(JSON.stringify(userDate));
+        //     return
+        // }
+        const userResult = handleUserRouter(req, res);
+        if (userResult) {
+            userResult.then(userDate=>{
+                 res.end(JSON.stringify(userDate));
+            });
             return
         }
 
