@@ -1,9 +1,10 @@
 class BaseModule{
     constructor(data,message){
         if(typeof data==='string'){
-            this.message=message;
+            this.message=data;
             data=null;
             message=null;
+            return
         }
         if(data){
             this.data=data;
@@ -25,7 +26,7 @@ class SuccessModule extends BaseModule{
 //失败
 class ErrorModule extends BaseModule{
     constructor(data,message){
-        super(data,messge);
+        super(data,message);
         this.code=-1;
     }
 }
